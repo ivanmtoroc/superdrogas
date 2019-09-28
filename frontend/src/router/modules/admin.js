@@ -1,8 +1,11 @@
 import Admin from '@/components/admin/Admin'
-import Login from '@/components/admin/login/Login'
-import Email from '@/components/admin/password_reset/Email'
-import NewPassword from '@/components/admin/password_reset/NewPassword'
-import ResetDone from '@/components/admin/password_reset/ResetDone'
+
+import Auth from '@/components/admin/auth/Auth'
+import Login from '@/components/admin/auth/views/Login'
+import PasswordReset from '@/components/admin/auth/views/PasswordReset'
+import PasswordResetNewPassword from '@/components/admin/auth/views/PasswordResetNewPassword'
+import PasswordResetDone from '@/components/admin/auth/views/PasswordResetDone'
+
 import Board from '@/components/admin/board/Board'
 import Home from '@/components/admin/board/apps/home/Home'
 import Batches from '@/components/admin/board/apps/batches/Batches'
@@ -88,24 +91,30 @@ export default {
       ]
     },
     {
-      path: 'login',
-      name: 'login',
-      component: Login
-    },
-    {
-      path: 'password-rest/',
-      name: 'password-reset-email',
-      component: Email
-    },
-    {
-      path: 'password-reset/:uid/:token',
-      name: 'password-reset-new-password',
-      component: NewPassword
-    },
-    {
-      path: 'password-reset/done',
-      name: 'password-reset-done',
-      component: ResetDone
+      path: 'auth',
+      component: Auth,
+      children: [
+        {
+          path: 'login',
+          name: 'login',
+          component: Login
+        },
+        {
+          path: 'password-reset',
+          name: 'password-reset',
+          component: PasswordReset
+        },
+        {
+          path: 'password-reset/:uid/:token',
+          name: 'password-reset-new-password',
+          component: PasswordResetNewPassword
+        },
+        {
+          path: 'password-reset-done',
+          name: 'password-reset-done',
+          component: PasswordResetDone
+        }
+      ]
     }
   ]
 }

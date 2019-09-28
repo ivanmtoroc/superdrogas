@@ -27,16 +27,13 @@ const getters = {
     var products = []
     state.products.forEach(product => {
       if (product.is_active) {
-        products.push({
-          id: product.id,
-          name: product.name,
-          brand: product.brand_name,
-          price: product.price,
-          image: product.image
-        })
+        products.push(product)
       }
     })
     return products
+  },
+  mostSelledProducts: state => {
+    return state.products.slice(0, 12)
   },
   numberProducts: state => (state.products) ? state.products.length : 0,
   formData: state => state.formData

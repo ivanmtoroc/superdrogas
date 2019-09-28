@@ -24,6 +24,7 @@ class LoginSerializer(serializers.Serializer):
     """
     username = serializers.CharField()
     password = serializers.CharField()
+    is_staff = serializers.BooleanField()
 
     def validate_username(self, value):
         """
@@ -46,8 +47,13 @@ class LoginSerializer(serializers.Serializer):
         validate confirm if the credentials are correct
         """
         user = authenticate(username=attrs['username'], password=attrs['password'])
+        is_staff = attrs['is_staff']
+
         if not user:
             raise serializers.ValidationError({'password': ['Invalid credentials.']})
+
+        if (is_staff and user.rol == 'CM') or (not is_staff and user.rol != 'CM'):
+            raise ValidationError({'username': ['User does not exist.']})
 
         return attrs
 

@@ -1,0 +1,206 @@
+<header>
+    <style type="text/css">
+        .lead {
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .lead {
+            font-size: 21px;
+        }
+        *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+        :after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+        h5{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;}
+        h5{margin-top:10px;margin-bottom:10px;}
+        h5{font-size:14px;}
+        .row{margin-right:-15px;margin-left:-15px;}
+        .col-sm-3,.col-xs-6{position:relative;min-height:1px;padding-right:15px;padding-left:15px;}
+        .col-xs-6{float:left;}
+        .col-xs-6{width:50%;}
+        .row:after,.row:before{display:table;content:" ";}
+        .row:after{clear:both;}
+        /*! CSS Used from: https://ducthanhnguyen.github.io/MaterialAdminLTE/bower_components/font-awesome/css/font-awesome.min.css */
+        .fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+        h5{font-family:'Source Sans Pro',sans-serif;}
+        .box .border-right{border-right:1px solid #f4f4f4;}
+        .box-footer:before,.box-footer:after{content:" ";display:table;}
+        .box-footer:after{clear:both;}
+        .box-footer{border-top-left-radius:0;border-top-right-radius:0;border-bottom-right-radius:3px;border-bottom-left-radius:3px;border-top:1px solid #f4f4f4;padding:10px;background-color:#fff;}
+        .description-block{display:block;margin:10px 0;text-align:center;}
+        .description-block>.description-header{margin:0;padding:0;font-weight:600;font-size:16px;}
+        .description-block>.description-text{text-transform:uppercase;}
+        .text-red{color:#dd4b39!important;}
+        .text-yellow{color:#f39c12!important;}
+        .text-green{color:#00a65a!important;}
+        h5{font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:300;}
+        h5{font-weight:400;}
+        *{-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-tap-highlight-color:transparent;}
+        section {
+            display: block;
+        }
+        .invoice {
+            position: relative;
+            background: #fff;
+            border: 1px solid #f4f4f4;
+            padding: 20px;
+            margin: 10px 25px;
+        }
+
+        .invoice {
+            width: 100%;
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .row:after,
+        .row:before {
+            display: table;
+            content: " ";
+        }
+
+        .row:after {
+            clear: both;
+        }
+
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .bg-green{color:#fff!important;}
+        .bg-green{background-color:#00a65a!important;}
+
+        .bg-red{color:#fff!important;}
+        .bg-red{background-color:#dd4b39!important;}
+
+        .bg-yellow{color:#fff!important;}
+        .bg-yellow{background-color:#f39c12!important;}
+
+        .bg-purple{color:#fff!important;}
+        .bg-purple{background-color:#605ca8 !important;}
+
+        .bg-grey{color:#fff!important;}
+        .bg-grey{background-color: #83868e !important;}
+
+        a{background-color:transparent;}
+        a:active,a:hover{outline:0;}
+        *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+        :after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+        a{color:#337ab7;text-decoration:none;}
+        a:focus,a:hover{color:#23527c;text-decoration:underline;}
+        a:focus{outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
+        h3{font-family:inherit;font-weight:500;line-height:1.1;color:inherit;}
+        h3{margin-top:20px;margin-bottom:10px;}
+        h3{font-size:24px;}
+        p{margin:0 0 10px;}
+        .col-lg-3,.col-xs-6{position:relative;min-height:1px;padding-right:15px;padding-left:15px;}
+        .col-xs-6{float:left;}
+        .col-xs-6{width:50%;}
+        h3{font-family:'Source Sans Pro',sans-serif;}
+        a{color:#3c8dbc;}
+        a:hover,a:active,a:focus{outline:none;text-decoration:none;color:#72afd2;}
+        .small-box{border-radius:2px;position:relative;display:block;margin-bottom:20px;box-shadow:0 1px 1px rgba(0,0,0,0.1);}
+        .small-box>.inner{padding:10px;}
+        .small-box>.small-box-footer{position:relative;text-align:center;padding:3px 0;color:#fff;color:rgba(255,255,255,0.8);display:block;z-index:10;background:rgba(0,0,0,0.1);text-decoration:none;}
+        .small-box>.small-box-footer:hover{color:#fff;background:rgba(0,0,0,0.15);}
+        .small-box h3{font-size:38px;font-weight:bold;margin:0 0 10px 0;white-space:nowrap;padding:0;}
+        .small-box p{font-size:15px;}
+        .small-box h3,.small-box p{z-index:5;}
+        .small-box .icon{-webkit-transition:all .3s linear;-o-transition:all .3s linear;transition:all .3s linear;position:absolute;top:-10px;right:10px;z-index:0;font-size:90px;color:rgba(0,0,0,0.15);}
+        .small-box:hover{text-decoration:none;color:#f9f9f9;}
+        .small-box:hover .icon{font-size:95px;}
+
+        .bg-aqua{color:#fff!important;}
+        .bg-aqua{background-color:#00c0ef!important;}
+        h3{font-family:Roboto,Helvetica,Arial,sans-serif;font-weight:300;}
+        a,a:focus,a:hover{color:#009688;}
+        :focus{outline:0;}
+        .small-box{box-shadow:0 1px 6px 0 rgba(0,0,0,0.12),0 1px 6px 0 rgba(0,0,0,0.12);border-radius:2px;border:0;}
+        .small-box p{font-weight:300;}
+        .skin-blue a,.skin-blue a:hover,.skin-blue a:focus{color:#2196f3;}
+    </style>
+</header>
+
+
+<section class="invoice">
+
+    <div class="row">
+        <h1 class="col-xs-6"> Reporte General - $nombre_empresa</h1>
+    </div>
+
+    <div class="row">
+        <table width="100%" border="0" cellspacing="10" cellpadding="10">
+            <tr>
+                <td>
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>$online_sales</h3>
+                            <p>Ventas on-line</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="small-box bg-yellow">
+                        <div class="inner">
+                            <h3>$online_amount</h3>
+                            <p>Ganancias on-line</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3>$in_situ_sales</h3>
+                            <p>Ventas in-situ</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>$in_situ_amount</h3>
+                            <p>Ganancias in-situ</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="small-box bg-purple">
+                        <div class="inner">
+                            <h3>$clientes_Activos</h3>
+                            <p>Clientes activos</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="small-box bg-grey">
+                        <div class="inner">
+                            <h3>$vendedores_Activos</h3>
+                            <p>Vendedores activos</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <table width="100%" border="1" cellspacing="0" cellpadding="5">
+                <tr>
+                    <td style="text-align: center" colspan="2">
+                        <p class="lead">5 Productos mas vendidos</p>
+                    </td>
+                </tr>
+                $productos
+            </table>
+        </div>
+    </div>
+
+</section>

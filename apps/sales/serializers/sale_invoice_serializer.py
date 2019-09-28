@@ -8,7 +8,7 @@ Serializer to SaleInvoice model
 from rest_framework import serializers
 
 # Sales models
-from apps.sales.models.sale_invoice_model import SaleInvoice
+from apps.sales.models import SaleInvoice
 
 
 class SaleInvoiceSerializer(serializers.ModelSerializer):
@@ -19,11 +19,4 @@ class SaleInvoiceSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = SaleInvoice
-        fields = (
-            'id',
-            'user_id',
-            'client_id',
-            'sale_type',
-            'date',
-            'total_amount'
-        )
+        fields = '__all__'

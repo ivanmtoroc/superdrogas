@@ -36,6 +36,6 @@ class PharmacySerializer(serializers.ModelSerializer):
         )
         domain.save()
 
-        create_superuser(schema_name=pharmacy.schema_name)
+        create_superuser(schema_name=pharmacy.schema_name, email=Pharmacy.email)
 
         return pharmacy

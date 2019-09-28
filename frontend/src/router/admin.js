@@ -4,6 +4,7 @@ import store from '@/store'
 import admin from './modules/admin'
 import landing from './modules/landing'
 import Error404 from '@/components/errors/Error404'
+import TenantForm from '@/components/landing/TenantForm'
 
 Vue.use(Router)
 
@@ -13,6 +14,11 @@ const router = new Router({
   routes: [
     { ...admin },
     { ...landing },
+    {
+      path: '/tenant-form',
+      name: 'tenant-form',
+      component: TenantForm
+    },
     {
       path: '*',
       component: Error404

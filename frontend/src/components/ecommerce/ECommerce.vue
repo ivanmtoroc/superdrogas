@@ -2,7 +2,9 @@
   <body class="hold-transition layout-top-nav fixed">
     <div class="wrapper bg-color">
       <header-component></header-component>
-      <router-view></router-view>
+      <div class="container-fluid m">
+        <router-view></router-view>
+      </div>
       <footer-component></footer-component>
     </div>
   </body>
@@ -23,6 +25,10 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
+.m {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
 .bg-color {
   background-color: #EEE;
 }

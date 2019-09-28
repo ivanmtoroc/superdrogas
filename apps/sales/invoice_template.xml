@@ -43,7 +43,7 @@
           <ds:SignedInfo>
             <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
             <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
-            <ds:Reference Id="xmldsig-83be186c-2de5-4fdc-b03a-6f61010bcb4e-ref0" URI="">
+            <ds:Reference Id="xmldsig-83be186c-2de5-4fdc-b03a-6f61010bcb4e-ref0" URI="superdrogas.co">
               <ds:Transforms>
                 <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
               </ds:Transforms>

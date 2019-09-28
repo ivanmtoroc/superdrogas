@@ -1,123 +1,47 @@
 <template>
-  <div class="cart">
-    <section class="content-header">
-      <div class="list-inline">
-        <h1>
-          Your Shopping Cart
-        </h1>
-      </div>
-    </section>
-    <div v-if='emptyCart'>
-      <div class="box box-default">
-        <div class="box-body">
-          <img
-            class="img-responsive"
-            src="@/static/images/cart-empty.jpg"
-            alt="Empty Cart"
-            width="100%"
-            height="100%"
-          >
+  <div class="row">
+    <div class="col-sm-12">
+      <section class="content-header">
+        <div class="list-inline">
+          <h1>Checkout</h1>
         </div>
-      </div>
-    </div>
-    <div v-else>
+      </section>
       <section class="content">
         <div class="row">
           <div class="col-sm-12">
             <div class="box">
-              <div class="box-body">
-                <table
-                  id="table"
-                  class="table table-bordered table-striped"
-                  v-show="itemsOnCart"
-                >
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      v-for="(p, index) in cartProducts"
-                      :key="index"
-                    >
-                      <td>{{ p.name }}</td>
-                      <td>${{ p.price }}</td>
-                      <td>{{ p.quantity }}</td>
-                      <td class="text-center">
-                        <a
-                          @click="getProduct(p.id)"
-                          class="btn.btn-app btn-primary btn-sm action-btn"
-                          data-toggle="modal"
-                          data-target="#product-detail"
-                        >
-                          <i class="fa fa-info-circle"></i>
-                        </a>
-                        <a
-                          @click="deleteFromCart(p)"
-                          class="btn.btn-app btn-danger btn-sm action-btn"
-                        >
-                          <i class="fa fa-minus-square"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><b>Total:</b></td>
-                      <td></td>
-                      <td><b>${{ total }}</b></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button
-                  v-show="itemsOnCart"
-                  type="submit"
-                  @click='checkout($event)'
-                  class="btn btn-primary btn-flat"
-                >
-                  <i class="fa fa-credit-card"></i>
-                  Checkout
+              <div class="box-body text-center">
+                <p>
+                  Thank you for choosing us. :)
+                </p>
+                <p>
+                  Download:
+                </p>
+                <button @click="downloadXML" class="btn btn-success">
+                  XML
+                </button>
+                <button @click="downloadPDF" class="btn btn-success">
+                  PDF
                 </button>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <product-detail />
+      <a id="download" style="display: none;"></a>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import ProductDetail from '@/components/admin/board/apps/products/modals/ProductsDetail'
+import { mapActions } from 'vuex'
 
 export default {
-  name: 'cart',
-  components: {
-    ProductDetail
-  },
-  computed: {
-    ...mapGetters('ecommerce', [
-      'cartProducts',
-      'itemsOnCart',
-      'emptyCart'
-    ]),
-    total () {
-      return this.cartProducts.reduce((total, p) => {
-        return total + p.price * p.quantity
-      }, 0)
-    }
-  },
+  name: 'checkout',
   methods: {
     ...mapActions('ecommerce', [
-      'deleteFromCart',
-      'checkout'
-    ]),
-    ...mapActions('products', [
-      'getProduct'
+      'downloadXML',
+      'downloadPDF'
     ])
   }
 }

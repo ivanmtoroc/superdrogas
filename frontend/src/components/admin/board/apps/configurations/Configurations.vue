@@ -20,17 +20,29 @@
         <div class="col-sm-12">
           <div class="box">
             <div class="box-body">
-
+              <div class="text-center">
+                <button @click="downloadData()" class="btn btn-primary">
+                  Download data
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <a id="download" style="display: none;"></a>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-  name: 'configurations'
+  name: 'configurations',
+  methods: {
+    ...mapActions('app', [
+      'downloadData'
+    ])
+  }
 }
 </script>

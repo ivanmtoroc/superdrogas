@@ -28,7 +28,7 @@
               </li>
               <li class="user-footer">
                 <div>
-                  <a @click="logout()" class="btn btn-default btn-block btn-flat">
+                  <a @click="logout({ isStaff: true})" class="btn btn-default btn-block btn-flat">
                     Logout
                     <i class="fa fa-sign-out"></i>
                   </a>

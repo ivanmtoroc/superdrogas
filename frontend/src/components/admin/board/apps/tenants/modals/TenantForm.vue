@@ -58,6 +58,18 @@
           placeholder="Description"
           :inputErrors="errors.description"
         />
+        <div class="form-group col-sm-12">
+          <label>Package</label>
+          <select2
+            id="package"
+            :options="packages"
+            v-model="pack"
+          >
+          </select2>
+          <span v-if="errors.package" class="help-block error-block">
+            This field is required.
+          </span>
+        </div>
       </div>
       <div class="pull-right">
         <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
@@ -73,6 +85,15 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'tenant-form',
+  data () {
+    return {
+      packages: [
+        { id: 'STT', text: 'Starter' },
+        { id: 'STD', text: 'Standart' },
+        { id: 'PRM', text: 'Premium' }
+      ]
+    }
+  },
   computed: {
     ...mapState('tenants', [
       'tenant',
@@ -143,6 +164,14 @@ export default {
       },
       set (value) {
         this.$store.commit('tenants/SET_DESCRIPTION', value)
+      }
+    },
+    pack: {
+      get () {
+        return this.tenant.package
+      },
+      set (value) {
+        this.$store.commit('tenants/SET_PACKAGE', value)
       }
     }
   },

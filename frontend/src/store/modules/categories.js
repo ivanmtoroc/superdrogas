@@ -15,12 +15,15 @@ const getters = {
     state.categories.forEach(category => {
       if (category.is_active) {
         categories.push({
-          id: category.id,
+          ...category,
           text: category.name
         })
       }
     })
     return categories
+  },
+  firstSixCategories: state => {
+    return state.categories.slice(0, 6)
   }
 }
 

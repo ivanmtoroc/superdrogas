@@ -9,22 +9,13 @@
         </ol>
         <div class="carousel-inner">
           <div class="item active">
-            <img
-              src="http://placehold.it/2000x800/39CCCC/ffffff&text=Acetaminofen"
-              alt="Acetaminofen"
-            >
+            <img src="@/static/images/ad-01.jpg" alt="Ad">
           </div>
           <div class="item">
-            <img
-              src="http://placehold.it/2000x800/45AB23/ffffff&text=Loratadina"
-              alt="Loratadina"
-            >
+            <img src="@/static/images/ad-02.png" alt="Ad">
           </div>
           <div class="item">
-            <img
-              src="http://placehold.it/2000x800/AA44CC/ffffff&text=Dolex"
-              alt="Dolex"
-            >
+            <img src="@/static/images/ad-03.jpg" alt="Ad">
           </div>
         </div>
       </div>

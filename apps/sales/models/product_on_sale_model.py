@@ -7,11 +7,11 @@ Model to manage products on sale invoice
 # Django
 from django.db import models
 
-# Sales models
-from apps.sales.models.sale_invoice_model import SaleInvoice
-
 # Inventory models
-from apps.inventory.models.product_model import Product
+from apps.inventory.models import Product
+
+# Sales models
+from .sale_invoice_model import SaleInvoice
 
 
 class ProductOnSaleInvoice(models.Model):
@@ -21,11 +21,11 @@ class ProductOnSaleInvoice(models.Model):
     sale_invoice_id = models.ForeignKey(SaleInvoice, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    total_price = models.IntegerField()
+    unit_price = models.IntegerField()
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'{self.product_id.name} {self.quantity}'
+        return f'{self.id}: {self.product_id.name} - {self.quantity}'
 
     def product_name(self):
         """
@@ -39,9 +39,8 @@ class ProductOnSaleInvoice(models.Model):
         """
         return self.product_id.description
 
-    def product_subtotal(self):
+    def product_total_price(self):
         """
         product_name return the name of the product category
         """
-        subtotal = self.quantity * self.total_price
-        return subtotal
+        return self.quantity * self.unit_price

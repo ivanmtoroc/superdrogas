@@ -8,7 +8,7 @@ Serializer to ProductOnSaleInvoice model
 from rest_framework import serializers
 
 # Sales models
-from apps.sales.models.product_on_sale_model import ProductOnSaleInvoice
+from apps.sales.models import ProductOnSaleInvoice
 
 
 class ProductOnSaleInvoiceSerializer(serializers.ModelSerializer):
@@ -24,8 +24,8 @@ class ProductOnSaleInvoiceSerializer(serializers.ModelSerializer):
             'product_id',
             'product_name',
             'product_description',
-            'product_subtotal',
+            'product_total_price',
             'quantity',
-            'total_price',
+            'unit_price',
             'is_active',
         )

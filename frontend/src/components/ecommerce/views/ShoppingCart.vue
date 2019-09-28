@@ -1,124 +1,120 @@
 <template>
-  <div class="cart">
-    <section class="content-header">
-      <div class="list-inline">
-        <h1>
-          Your Shopping Cart
-        </h1>
-      </div>
-    </section>
-    <div v-if='emptyCart'>
-      <div class="box box-default">
-        <div class="box-body">
-          <img
-            class="img-responsive"
-            src="@/static/images/cart-empty.jpg"
-            alt="Empty Cart"
-            width="100%"
-            height="100%"
-          >
+  <div class="row">
+    <div class="col-sm-12">
+      <section class="content-header">
+        <div class="list-inline">
+          <h1>Shopping cart</h1>
         </div>
-      </div>
-    </div>
-    <div v-else>
-      <section class="content">
+      </section>
+      <section>
         <div class="row">
           <div class="col-sm-12">
             <div class="box">
               <div class="box-body">
-                <table
-                  id="table"
-                  class="table table-bordered table-striped"
-                  v-show="itemsOnCart"
-                >
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Price</th>
-                      <th>Quantity</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr
-                      v-for="(p, index) in cartProducts"
-                      :key="index"
+                <div v-if="isCartEmpty" class="text-center">
+                  <img class="cart-empty-img" src="@/static/images/shopping-cart.png" alt="Cart">
+                  <p>Your shopping cart is empty!</p>
+                </div>
+                <div v-else>
+                  <table id="table" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Unit price</th>
+                        <th>Quantity</th>
+                        <th>Total price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="(product, index) in cartProducts" :key="index">
+                        <td>{{ product.name }}</td>
+                        <td>${{ product.price }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>${{ product.quantity * product.price }}</td>
+                        <td class="text-center">
+                          <img class="product-img" :src="product.image" alt="Product">
+                        </td>
+                        <td class="text-center">
+                          <a @click="deleteFromCart(product)" class="btn.btn-app btn-danger btn-sm action-btn">
+                            <i class="fa fa-minus-square"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="pull-right">
+                    <div class="total">
+                      Total: <strong>${{ total }}</strong>
+                    </div>
+                    <router-link
+                      v-if="!customerLogged"
+                      :to="{ name: 'login-signup-ecommerce' }"
+                      class="btn btn-raised btn-success action-btn margin-btn"
                     >
-                      <td>{{ p.name }}</td>
-                      <td>${{ p.price }}</td>
-                      <td>{{ p.quantity }}</td>
-                      <td class="text-center">
-                        <a
-                          @click="getProduct(p.id)"
-                          class="btn.btn-app btn-primary btn-sm action-btn"
-                          data-toggle="modal"
-                          data-target="#product-detail"
-                        >
-                          <i class="fa fa-info-circle"></i>
-                        </a>
-                        <a
-                          @click="deleteFromCart(p)"
-                          class="btn.btn-app btn-danger btn-sm action-btn"
-                        >
-                          <i class="fa fa-minus-square"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><b>Total:</b></td>
-                      <td></td>
-                      <td><b>${{ total }}</b></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button
-                  v-show="itemsOnCart"
-                  type="submit"
-                  @click='checkout($event)'
-                  class="btn btn-primary btn-flat"
-                >
-                  <i class="fa fa-credit-card"></i>
-                  Checkout
-                </button>
+                      Login / Signup
+                    </router-link>
+                    <button v-else @click="checkout({ $event, saleType: 'OL' })" class="btn btn-raised btn-success action-btn margin-btn">
+                      <i class="fa fa-money"></i>
+                      Checkout
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <product-detail />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import ProductDetail from '@/components/admin/board/apps/products/modals/ProductsDetail'
+import { mapState, mapGetters, mapActions } from 'vuex'
+import template from '@/utilities/template'
 
 export default {
-  name: 'cart',
-  components: {
-    ProductDetail
-  },
+  name: 'shopping-cart',
   computed: {
-    ...mapGetters('ecommerce', [
-      'cartProducts',
-      'itemsOnCart',
-      'emptyCart'
+    ...mapState('ecommerce', [
+      'cartProducts'
     ]),
-    total () {
-      return this.cartProducts.reduce((total, p) => {
-        return total + p.price * p.quantity
-      }, 0)
-    }
+    ...mapGetters('ecommerce', [
+      'isCartEmpty',
+      'total'
+    ]),
+    ...mapGetters('authentication', [
+      'customerLogged'
+    ])
   },
   methods: {
     ...mapActions('ecommerce', [
       'deleteFromCart',
       'checkout'
-    ]),
-    ...mapActions('products', [
-      'getProduct'
     ])
+  },
+  mounted () {
+    template.reload()
+  },
+  updated () {
+    this.$nextTick(() => { template.reload() })
   }
 }
 </script>
+
+<style scoped>
+.total {
+  font-size: 20px;
+  display: inline;
+}
+.margin-btn {
+  margin: 10px 5px 10px 20px;
+}
+.cart-empty-img {
+  height: 250px;
+}
+.product-img {
+  height: 80px;
+}
+</style>

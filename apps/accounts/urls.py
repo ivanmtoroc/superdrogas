@@ -27,8 +27,6 @@ urlpatterns = [
     url('login/', LoginView.as_view(), name='login'),
     url('tenant_backup/', get_backup, name='tenant_backup'),
     url('tenant_report/', get_tenant_report, name='tenant_report'),
-
-
 ]
 
 urlpatterns += ROUTER.urls

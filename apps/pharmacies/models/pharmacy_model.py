@@ -17,6 +17,12 @@ class Pharmacy(TenantMixin):
 
     A pharmacy is an tenant in the system
     """
+    PACKAGES = [
+        ('STT', 'Starter'),
+        ('STD', 'Standart'),
+        ('PRM', 'Premium'),
+    ]
+
     name = models.CharField(max_length=50)
     prefix = models.CharField(max_length=2)
     nit = models.CharField(max_length=10)
@@ -24,6 +30,7 @@ class Pharmacy(TenantMixin):
     email = models.EmailField()
     address = models.CharField(max_length=50)
     description = models.TextField(max_length=400)
+    package = models.CharField(max_length=3, choices=PACKAGES)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

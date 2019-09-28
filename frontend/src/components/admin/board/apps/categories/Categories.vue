@@ -105,7 +105,7 @@ import CategoryForm from './modals/CategoryForm'
 import CategoryStatus from './modals/CategoryStatus'
 
 export default {
-  name: 'brands',
+  name: 'categories',
   components: {
     CategoryDetail,
     CategoryForm,

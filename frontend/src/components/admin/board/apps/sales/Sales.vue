@@ -33,10 +33,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    v-for="(product, index) in products"
-                    :key="index"
-                  >
+                  <tr v-for="(product, index) in products" :key="index">
                     <td>{{ product.name }}</td>
                     <td>{{ product.brand }}</td>
                     <td>{{ product.price }}</td>
@@ -59,28 +56,22 @@
         <div class="col-sm-6">
           <div class="box">
             <div class="box-body">
-              <table
-                id="table-sale"
-                class="table table-bordered table-striped"
-              >
+              <table id="table-sale" class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Unit Price</th>
+                    <th>Unit price</th>
                     <th>Quantity</th>
-                    <th>Total Price</th>
+                    <th>Total price</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    v-for="(product, index) in cartProducts"
-                    :key="index"
-                  >
+                  <tr v-for="(product, index) in cartProducts" :key="index">
                     <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
+                    <td>${{ product.price }}</td>
                     <td>{{ product.quantity }}</td>
-                    <td>{{ product.quantity * product.price }}</td>
+                    <td>${{ product.quantity * product.price }}</td>
                     <td class="text-center">
                       <a
                         @click="deleteFromCart(product)"
@@ -91,11 +82,9 @@
                     </td>
                   </tr>
                   <div class="box-footer">
-                    <a
-                      @click="checkout()"
-                      class="btn btn-raised btn-success action-btn"
-                    > Checkout
+                    <a @click="checkout()" class="btn btn-raised btn-success action-btn">
                       <i class="fa fa-money"></i>
+                      Checkout
                     </a>
                   </div>
                 </tbody>
@@ -131,8 +120,8 @@ export default {
     ]),
     ...mapGetters('ecommerce', [
       'cartProducts',
-      'itemsOnCart',
-      'emptyCart'])
+      'itemsOnCart'
+    ])
   },
   created () {
     this.getProducts()

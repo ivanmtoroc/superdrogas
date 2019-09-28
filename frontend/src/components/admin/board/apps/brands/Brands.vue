@@ -125,9 +125,6 @@ export default {
       'getBrand'
     ])
   },
-  created () {
-    this.getBrands()
-  },
   updated () {
     this.$nextTick(() => { template.reload() })
   }

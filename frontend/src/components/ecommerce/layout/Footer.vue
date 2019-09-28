@@ -1,5 +1,5 @@
 <template>
-  <footer class="main-footer">
+  <footer class="main-footer navbar-fixed-bottom">
     <div class="container">
       <strong>Copyright &copy; 2019 | <a>Super Drogas</a></strong>.
       All rights reserved.

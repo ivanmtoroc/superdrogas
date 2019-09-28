@@ -3,12 +3,11 @@
     <nav class="navbar navbar-static-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a
-            href=""
-            class="navbar-brand"
-          >
-            <strong>Cruz Azul</strong>
-          </a>
+          <router-link :to="{ name: 'landing' }" class="navbar-brand">
+            <strong class="title">
+              {{ tenant.name }}
+            </strong>
+          </router-link>
           <button
             type="button"
             class="navbar-toggle collapsed"
@@ -23,35 +22,104 @@
           id="navbar-collapse"
         >
           <ul class="nav navbar-nav nav-item">
-            <li>
+            <li v-for="(category, index) in firstSixCategories" :key="index">
               <a>
-                Medicamentos
-              </a>
-            </li>
-            <li>
-              <a>
-                Naturales
+                {{ category.name }}
               </a>
             </li>
           </ul>
         </div>
         <div class="navbar-custom-menu">
-          <router-link :to="{ name: 'login' }">
+          <a v-if="customerLogged">
+            <ul class="nav navbar-nav nav-item">
+              <li>
+                <button class="btn username">
+                  {{ customer.first_name }} {{ customer.last_name }}
+                </button>
+              </li>
+            </ul>
+          </a>
+          <router-link :to="{ name: 'shopping-cart' }">
             <ul class="nav navbar-nav nav-item">
               <li>
                 <button class="btn btn-success btn-raised">
-                  Login
+                  <i class="fa fa-shopping-cart"></i>
+                  <span v-if="itemsOnCart != 0" class="badge bg-teal">
+                    {{ itemsOnCart }}
+                  </span>
                 </button>
               </li>
             </ul>
           </router-link>
+          <router-link v-if="!customerLogged" :to="{ name: 'login-signup-ecommerce' }">
+            <ul class="nav navbar-nav nav-item">
+              <li>
+                <button class="btn btn-success btn-raised">
+                  Login / Signup
+                </button>
+              </li>
+            </ul>
+          </router-link>
+          <a v-else @click="logout({ isStaff: false })">
+            <ul class="nav navbar-nav nav-item">
+              <li>
+                <button class="btn btn-danger btn-raised">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </a>
         </div>
       </div>
     </nav>
   </header>
 </template>
 
-<style>
+<script>
+import { mapState, mapGetters, mapActions } from 'vuex'
+
+export default {
+  name: 'header-ecommerce',
+  computed: {
+    ...mapState('app', [
+      'tenant'
+    ]),
+    ...mapState('authentication', [
+      'customer'
+    ]),
+    ...mapGetters('categories', [
+      'firstSixCategories'
+    ]),
+    ...mapGetters('ecommerce', [
+      'itemsOnCart'
+    ]),
+    ...mapGetters('authentication', [
+      'customerLogged'
+    ])
+  },
+  methods: {
+    ...mapActions('categories', [
+      'getCategories'
+    ]),
+    ...mapActions('authentication', [
+      'logout'
+    ])
+  },
+  mounted () {
+    this.getCategories()
+  }
+}
+</script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
+.username {
+  color: white;
+}
+.title {
+  font-size: 30px;
+  color: white;
+}
 .nav {
   height: auto;
   margin-bottom: 2rem;
@@ -64,24 +132,11 @@
   color: #00d1b2;
   padding-bottom: calc(0.75rem - 8px);
 }
-</style>
-
-<script>
-import { mapGetters } from 'vuex'
-
-export default {
-  computed: {
-    ...mapGetters('ecommerce', [
-      'itemsOnCart'
-    ])
-  }
-}
-</script>
-
-<style scoped>
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800");
 .nav-item {
   margin-bottom: 0px !important;
+}
+.navbar-custom-menu ul {
+  margin: 0px 5px;
 }
 .planContainer {
   display: flex;

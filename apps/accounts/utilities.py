@@ -27,12 +27,12 @@ def create_superuser(schema_name, email):
     """
     create_superuser create the admin in new tenant
     """
-    password = random_password()
+    # password = random_password()
 
     with schema_context(schema_name):
-        User.objects.create_user(username='admin', password=password)
+        User.objects.create_user(username='admin', password='password')
 
-    send_admin_email('admin', password, email)
+    # send_admin_email('admin', password, email)
 
 
 def get_backup(request):

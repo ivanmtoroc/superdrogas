@@ -1,11 +1,12 @@
-# Super Drogas 💊🏥
+# 💊🏥 Super Drogas
 
-SaaS web application for pharmacy administration.
+SaaS web application for pharmacies administration.
 
-This application is development using Django, Django Rest Framework and Vue.js.
+Development using Django, Django Rest Framework, Django Tenants and Vue.js.
 
 ## References
 
 - [Django](https://github.com/django/django).
 - [Django Rest Framework](https://github.com/encode/django-rest-framework).
+- [Django Tenants](https://github.com/tomturner/django-tenants).
 - [Vue.js](https://github.com/vuejs/vue).

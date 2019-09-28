@@ -5,7 +5,7 @@ pipeline {
       when { not { branch 'master' } }
       steps {
         withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/luishgranja/superdrogas.git"
+          sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/ivanmtoroc/superdrogas.git"
           sh 'git config --add remote.origin.fetch +refs/heads/master:refs/remotes/origin/master'
           sh 'git fetch --no-tags'
           sh "git checkout origin/${env.BRANCH_NAME}"
@@ -37,7 +37,7 @@ pipeline {
       when { not { branch 'master' } }
       steps {
         withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/luishgranja/superdrogas.git"
+          sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/ivanmtoroc/superdrogas.git"
           sh 'git config --add remote.origin.fetch +refs/heads/master:refs/remotes/origin/master'
           sh 'git fetch --no-tags'
           sh 'git checkout origin/master'

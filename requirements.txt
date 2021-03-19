@@ -1,4 +1,4 @@
-django==2.2.4
+django==2.2.18
 django-cors-headers==3.0.2
 django-rest-auth==0.9.5
 django-tenants==2.2.3

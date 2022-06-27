@@ -8,5 +8,5 @@ psycopg2==2.8.2
 psycopg2-binary==2.8.2
 pytz==2019.1
 sqlparse==0.3.0
-reportlab==3.5.23
+reportlab==3.5.55
 xhtml2pdf==0.2.3
